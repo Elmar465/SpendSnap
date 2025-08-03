@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: spendSnap
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spendSnap
+    username: root
+    password: Elmar-465
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
