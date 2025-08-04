@@ -23,10 +23,14 @@ public class UserService {
     private final JwtService jwtService;
 
 
-    public UserModel registerUser(UserModel user){
+    public UserModel registerUser(UserModel user) {
+        if (userDao.findByUsername(user.getUsername()) != null) {
+            throw new RuntimeException("Username already exists!");
+        }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userDao.save(user);
     }
+
 
 
     public String verify(UserModel user){
