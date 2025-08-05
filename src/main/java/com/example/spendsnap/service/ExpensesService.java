@@ -18,11 +18,21 @@ public class ExpensesService {
 
     private final ExpensesDao expensesDao;
     private final UserDao  userDao;
+    private final UserService userService;
 
-    public Expenses addExpenses(Expenses expenses) {
-        return  expensesDao.save(expenses);
+    public ExpenseDto addExpenseFromDto(ExpenseDto expenseDto) {
+        UserModel user = userService.findUserById(expenseDto.getUserId());
+        Expenses expenses = new Expenses(
+                null,
+                expenseDto.getAmount(),
+                expenseDto.getDescription(),
+                expenseDto.getDate(),
+                expenseDto.getCategory(),
+                user
+        );
+        Expenses saved = expensesDao.save(expenses);
+        return toDto(saved);
     }
-
     public Expenses updateExpenses(Expenses expenses) {
         Expenses oldExpenses = expensesDao.findById(expenses.getId()).orElse(new Expenses());
         oldExpenses.setAmount(expenses.getAmount());
@@ -44,6 +54,7 @@ public class ExpensesService {
     }
 
     public Expenses getExpensesById(Integer id) {
+
         return expensesDao.findById(id).orElse(new Expenses());
     }
 

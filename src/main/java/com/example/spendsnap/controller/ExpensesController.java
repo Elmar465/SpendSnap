@@ -26,11 +26,11 @@ public class ExpensesController {
 
 
     @PostMapping("/addExpenses")
-    public ResponseEntity<ExpenseDto> addExpenses(@RequestBody Expenses expenses) {
-        Expenses expenses1 =expensesService.addExpenses(expenses);
-        ExpenseDto expenseDtoDto = toDto(expenses1);
-        return new  ResponseEntity<>(expenseDtoDto, HttpStatus.CREATED);
+    public ResponseEntity<ExpenseDto> addExpenses(@RequestBody ExpenseDto expenseDto) {
+        ExpenseDto response = expensesService.addExpenseFromDto(expenseDto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+
 
     @PutMapping("/update")
     public ResponseEntity<ExpenseDto> updateExpenses(@RequestBody Expenses expenses) {

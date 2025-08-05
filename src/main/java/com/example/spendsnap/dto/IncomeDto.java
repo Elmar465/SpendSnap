@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpenseDto {
+public class IncomeDto {
 
     private Integer id;
     @NotNull(message = "Amount is required")
@@ -25,6 +25,6 @@ public class ExpenseDto {
     private LocalDate date;
     @NotBlank(message = "Category is required")
     private String category;
-    @NotNull(message = "User id ie required")
+    @NotNull(message = "User ID is required")
     private Integer userId;
 }
