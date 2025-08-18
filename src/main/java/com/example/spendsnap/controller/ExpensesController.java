@@ -1,6 +1,7 @@
 package com.example.spendsnap.controller;
 
 
+import com.example.spendsnap.dao.ExpensesDao;
 import com.example.spendsnap.dto.ExpenseDto;
 import com.example.spendsnap.model.Expenses;
 import com.example.spendsnap.model.UserModel;
@@ -52,6 +53,33 @@ public class ExpensesController {
                 .map(ExpensesService::toDto)
                 .toList();
         return new   ResponseEntity<>(expenseDtops, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getTotalExpensesByUser/{userId}")
+    public ResponseEntity<Double> getTotalExpensesByUser(@PathVariable Integer userId) {
+        Double  totalExpenses = expensesService.getTotalExpensesByUser(userId);
+        return  new ResponseEntity<>(totalExpenses, HttpStatus.OK);
+    }
+
+    @GetMapping("/getMonthlyExpensesSumByUser/{userId}/{month}/{year}")
+    public ResponseEntity<Double> getMonthlyExpensesSumByUser(@PathVariable Integer userId,
+                                                              @PathVariable Integer month,
+                                                              @PathVariable Integer year) {
+        Double monthly =  expensesService.getMonthlyExpensesSumByUser(userId, month, year);
+        return  new ResponseEntity<>(monthly, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getMonthlyExpensesByUser/{userId}/{month}/{year}")
+    public ResponseEntity<List<ExpenseDto>> getMonthlyExpensesByUser(@PathVariable Integer userId,
+                                                                        @PathVariable Integer month,
+                                                                        @PathVariable Integer year ) {
+        List<Expenses> expenses  =  expensesService.getMonthlyExpensesByUser(userId, month, year);
+        List<ExpenseDto> dtos = expenses.stream()
+                .map(ExpensesService::toDto)
+                .toList();
+        return new  ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
     @GetMapping("/getExpensesById/{id}")

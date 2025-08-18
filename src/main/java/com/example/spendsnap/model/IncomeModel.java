@@ -22,6 +22,8 @@ public class IncomeModel {
     private LocalDate date;
     private String category;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private UserModel user;
+
 
 }

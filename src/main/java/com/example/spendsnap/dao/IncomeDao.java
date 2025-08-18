@@ -22,5 +22,5 @@ public interface IncomeDao  extends JpaRepository<IncomeModel, Integer> {
     @Query("SELECT i FROM IncomeModel i WHERE i.user.id = :userId AND MONTH(i.date) = :month AND YEAR(i.date) = :year")
     List<IncomeModel> getMonthlyIncomeByUser(@Param("userId") Integer userId, @Param("month") int month, @Param("year") int year);
 
-//    Integer user(UserModel user);
+
 }

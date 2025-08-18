@@ -3,6 +3,7 @@ package com.example.spendsnap.service;
 
 import com.example.spendsnap.dao.UserDao;
 import com.example.spendsnap.dto.UserDto;
+import com.example.spendsnap.model.Role;
 import com.example.spendsnap.model.UserModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,6 +29,10 @@ public class UserService {
             throw new RuntimeException("Username already exists!");
         }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        if (user.getRole() == null) {
+            user.setRole(Role.USER);
+        }
+
         return userDao.save(user);
     }
 

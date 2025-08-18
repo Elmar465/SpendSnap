@@ -58,6 +58,30 @@ public class ExpensesService {
         return expensesDao.findById(id).orElse(new Expenses());
     }
 
+    public Double getTotalExpensesByUser(Integer userId) {
+        UserModel user = userDao.findById(userId).orElse(null);
+        if (user == null) {
+            return 0.0;
+        }
+        return expensesDao.getTotalExpensesByUser(userId);
+    }
+
+    public Double getMonthlyExpensesSumByUser(Integer userId, int month, int year) {
+        UserModel user = userDao.findById(userId).orElse(null);
+        if (user == null) {
+            return 0.0;
+        }
+        return expensesDao.getMonthlyExpensesSumByUser(userId, month, year);
+    }
+
+    public List<Expenses> getMonthlyExpensesByUser(Integer userId, int month, int year) {
+        UserModel user = userDao.findById(userId).orElse(null);
+        if (user == null) {
+            return Collections.emptyList();
+        }
+        return expensesDao.getMonthlyExpensesByUser(userId, month, year);
+    }
+
     public static  ExpenseDto toDto(Expenses expenses) {
         ExpenseDto expenseDto = new ExpenseDto();
         expenseDto.setId(expenses.getId());

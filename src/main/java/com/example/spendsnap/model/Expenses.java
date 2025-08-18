@@ -24,5 +24,6 @@ public class Expenses {
     private LocalDate date;
     private String category;
     @ManyToOne()
+    @JoinColumn(name = "user_id")
     private UserModel user;
 }

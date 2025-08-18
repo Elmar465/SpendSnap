@@ -38,6 +38,7 @@ public class WebConfig {
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(request ->
                         request.requestMatchers("/user/register", "/user/login").permitAll()
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 ).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
