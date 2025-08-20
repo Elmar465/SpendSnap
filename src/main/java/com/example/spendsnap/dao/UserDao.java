@@ -10,5 +10,5 @@ public interface UserDao extends JpaRepository<UserModel,Integer> {
 
 
     UserModel findByUsername(String username);
-
+    boolean existsByUsernameIgnoreCase(String username);
 }

@@ -1,6 +1,8 @@
 package com.example.spendsnap.controller;
 
 
+import com.example.spendsnap.dto.LoginRequest;
+import com.example.spendsnap.dto.RegisterRequest;
 import com.example.spendsnap.dto.UserDto;
 import com.example.spendsnap.model.UserModel;
 import com.example.spendsnap.service.UserService;
@@ -22,17 +24,15 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> registerUser(@RequestBody @Valid UserModel user){
-        UserModel userModel = userService.registerUser(user);
-        UserDto userDto = toDto(userModel);
-        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
+    public ResponseEntity<UserDto> register(@RequestBody @Valid RegisterRequest req){
+        UserModel saved = userService.registerUser(req.getUsername(), req.getPassword());
+        return new ResponseEntity<>(toDto(saved), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody @Valid UserModel user){
-        return userService.verify(user);
+    public String login(@RequestBody @Valid LoginRequest req){
+        return userService.verify(req.getUsername(), req.getPassword());
     }
-
 
 
     @GetMapping("/getUserById/{id}")
