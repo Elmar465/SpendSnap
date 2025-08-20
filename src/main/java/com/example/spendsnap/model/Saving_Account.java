@@ -32,19 +32,13 @@ public class Saving_Account {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false,
             foreignKey = @ForeignKey(name = "fk_saving_accounts_user"))
-    UserModel user_id;
+    UserModel user;
     @Column(nullable = false)
     private String name;
-    @NotBlank
-    @Pattern(regexp = "^[A-Z]{3}$")
-    @Column(name = "currency", nullable = false, length = 3)
     private String currency;
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
     private Double opening_balance;
-    @NotNull
-    @DecimalMin("0.000000")
-    @DecimalMax("1.000000")
     @Column(name = "interest_apr", nullable = false, precision = 9, scale = 6)
     private BigDecimal interestApr = BigDecimal.ZERO;
     @Enumerated(EnumType.STRING)
@@ -58,4 +52,6 @@ public class Saving_Account {
     @Version
     @Column(name = "version")
     private Integer version;
+
+
 }
