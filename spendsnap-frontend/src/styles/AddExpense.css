@@ -1,0 +1,132 @@
+.add-expense-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at top left, #1e1b32 0%, #181627 40%, #0f0e1b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.add-expense-glass {
+  background: rgba(30, 28, 46, 0.8);
+  box-shadow: 0 12px 64px rgba(0, 0, 0, 0.4), 0 2px 20px rgba(155, 140, 252, 0.25);
+  border-radius: 28px;
+  padding: 2.6rem 2.4rem;
+  max-width: 440px;
+  width: 100%;
+  border: 1px solid rgba(115, 103, 240, 0.3);
+  backdrop-filter: blur(16px);
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.add-expense-title {
+  color: #f7ce68;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 18px rgba(247, 206, 104, 0.25);
+  text-align: center;
+}
+
+.add-expense-form .form-row {
+  margin-bottom: 1.15rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-expense-form label {
+  color: #dddbe7;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.add-expense-form input,
+.add-expense-form select {
+  font-size: 1.07rem;
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(115, 103, 240, 0.6);
+  border-radius: 12px;
+  background: rgba(24, 23, 36, 0.9);
+  color: #f8e99b;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.add-expense-form input:focus,
+.add-expense-form select:focus {
+  box-shadow: 0 0 0 2px rgba(247, 206, 104, 0.5), 0 0 18px rgba(142, 84, 233, 0.4);
+  border-color: #f7ce68;
+}
+
+.add-expense-form button {
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 0.95rem 0;
+  font-size: 1.13rem;
+  background: linear-gradient(90deg, #7367f0 20%, #f7ce68 90%);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 24px rgba(142, 84, 233, 0.35);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.add-expense-form button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(142, 84, 233, 0.5), 0 0 20px rgba(247, 206, 104, 0.4);
+}
+
+.add-expense-form button:disabled {
+  background: #55536a;
+  color: #bbb8d2;
+  cursor: not-allowed;
+}
+
+.add-expense-message {
+  margin-top: 1rem;
+  font-size: 1.02rem;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0.68rem;
+  font-weight: 500;
+  animation: fadeIn 0.4s ease;
+}
+
+.add-expense-message.success {
+  background: rgba(0, 255, 128, 0.15);
+  color: #19d68d;
+  border: 1px solid rgba(0, 255, 128, 0.35);
+}
+
+.add-expense-message.error {
+  background: rgba(255, 0, 0, 0.15);
+  color: #ff5555;
+  border: 1px solid rgba(255, 0, 0, 0.35);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

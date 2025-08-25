@@ -1,0 +1,207 @@
+html, body, #root {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #0c0913;
+}
+
+.sexy-login-bg {
+  position: fixed;
+  inset: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background: radial-gradient(ellipse 150% 100% at 80% 10%, #181a1e 55%, #262150 100%);
+}
+
+.aurora-blur {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 60%;
+  filter: blur(58px);
+  opacity: 0.49;
+  animation: aurora-move 14s ease-in-out infinite alternate;
+}
+.blur-1 {
+  width: 400px;
+  height: 320px;
+  top: 14%;
+  left: 13%;
+  background: linear-gradient(125deg, #ffe175 0%, #eeb979 100%);
+  animation-delay: 0s;
+}
+.blur-2 {
+  width: 360px;
+  height: 300px;
+  bottom: 9%;
+  right: 11%;
+  background: linear-gradient(125deg, #8e54e9 20%, #b9c6ff 100%);
+  animation-delay: 6s;
+}
+@keyframes aurora-move {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.13) translateY(-35px); }
+}
+
+/* The glass card */
+.sexy-glass-card {
+  background: rgba(20,18,30,0.92);
+  border: 2.5px solid #47328f44;
+  border-radius: 2.3rem;
+  box-shadow: 0 34px 70px 0 rgba(68, 97, 242, 0.17), 0 2px 7px 0 rgba(0,0,0,0.10);
+  padding: 2.7rem 2.9rem 2.3rem 2.9rem;
+  min-width: 350px;
+  max-width: 385px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+  position: relative;
+  z-index: 2;
+  animation: card-float 2.7s cubic-bezier(.31,1.18,.55,1.04) infinite alternate;
+}
+@keyframes card-float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-12px); }
+}
+
+/* Logo with extra glow */
+.sexy-logo-glow {
+  margin-bottom: 0.6rem;
+  filter: drop-shadow(0 0 18px #f7ce6899) drop-shadow(0 0 11px #8e54e988);
+}
+
+.sexy-login-title {
+  margin-bottom: 0.7rem;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 1.3px;
+  font-size: 1.46rem;
+  line-height: 1.21;
+  text-shadow: 0 1px 18px #ffe38e22;
+}
+
+.gold-text {
+  color: #f7ce68;
+  background: linear-gradient(90deg, #ffe38e, #edc561, #e7c664, #8e54e9 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sexy-login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.12rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.44rem;
+}
+
+.input-group label {
+  margin-bottom: 0.33rem;
+  color: #ffe38ee3;
+  font-size: 1.04rem;
+  font-weight: 700;
+  letter-spacing: 0.11px;
+}
+
+.input-group input {
+  padding: 0.81rem;
+  border: 1.7px solid #45367c;
+  border-radius: 0.85rem;
+  font-size: 1.04rem;
+  background: #191726;
+  color: #fff;
+  outline: none;
+  font-family: inherit;
+  transition: border 0.23s, box-shadow 0.21s, background 0.19s;
+  box-shadow: 0 1.5px 7px #8e54e928;
+}
+.input-group input:focus {
+  border: 2px solid #f7ce68;
+  background: #23243b;
+  color: #fffbe9;
+  box-shadow: 0 0 0 2px #f7ce6899, 0 2px 10px #ffe38e33;
+}
+
+/* Button with gold glow and hover drip */
+.sexy-login-form button[type="submit"] {
+  padding: 0.88rem;
+  border: none;
+  border-radius: 0.8rem;
+  background: linear-gradient(90deg, #f7ce68 12%, #8e54e9 100%);
+  color: #191726;
+  font-weight: bold;
+  font-size: 1.21rem;
+  letter-spacing: 1.23px;
+  cursor: pointer;
+  margin-top: 0.7rem;
+  box-shadow: 0 3px 17px #ffe38e55, 0 2px 7px #8e54e966;
+  transition: background 0.14s, transform 0.08s, box-shadow 0.18s, color 0.19s;
+  outline: none;
+}
+
+.sexy-login-form button[type="submit"]:hover {
+  background: linear-gradient(93deg, #8e54e9 0%, #f7ce68 85%);
+  color: #fff;
+  box-shadow: 0 8px 36px #8e54e9bb, 0 3px 13px #ffe38e66;
+}
+
+/* Subtle pop for feedback */
+.sexy-message {
+  margin-top: 0.93rem;
+  text-align: center;
+  color: #f7ce68;
+  background: #1e1a24;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.33rem;
+  font-size: 1.04rem;
+  border: 1.2px solid #f7ce68;
+  box-shadow: 0 1px 7px #ffe38e18;
+}
+
+.sexy-login-footer {
+  margin-top: 0.2rem;
+  text-align: center;
+  font-size: 1.08rem;
+  color: #ffe38e99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sexy-login-footer a {
+  color: #f7ce68;
+  text-decoration: none;
+  font-weight: 800;
+  margin-left: 0.15rem;
+  margin-top: 0.10rem;
+  transition: color 0.15s;
+}
+.sexy-login-footer a:hover {
+  color: #8e54e9;
+}
+
+/* Responsive tweaks for mobile */
+@media (max-width: 600px) {
+  .sexy-glass-card {
+    min-width: 98vw;
+    max-width: 99vw;
+    padding: 1.2rem 0.5rem;
+    border-radius: 1.1rem;
+  }
+}
